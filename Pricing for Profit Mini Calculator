@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pricing for Profit Calculator - Jacob Roig</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-top {
+            margin-bottom: 25px;
+        }
+
+        .logo-top img {
+            height: 80px;
+            width: auto;
+        }
+
+        .main-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-top: 5px solid #B4E800;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        .input-label {
+            display: block;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .currency-symbol {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 35px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #B4E800;
+            box-shadow: 0 0 0 3px rgba(180, 232, 0, 0.1);
+        }
+
+        input::placeholder {
+            color: #cbd5e1;
+        }
+
+        .input-hint {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        .results-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            border-radius: 15px;
+            padding: 40px;
+            color: white;
+            margin-top: 30px;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .results-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #B4E800;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-display {
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .price-subtitle {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .breakdown {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .breakdown-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #B4E800;
+            margin-bottom: 15px;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .breakdown-label {
+            color: #cbd5e1;
+        }
+
+        .breakdown-value {
+            font-weight: 600;
+        }
+
+        .breakdown-total {
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+
+        .breakdown-total .breakdown-value {
+            color: #B4E800;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .quote-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f0fdf4;
+            border-left: 4px solid #B4E800;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: #334155;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .quote-author {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            color: #1e3a5f;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        @media (max-width: 640px) {
+            .calculator-card {
+                padding: 25px;
+            }
+
+            .main-title {
+                font-size: 28px;
+            }
+
+            .price-display {
+                font-size: 42px;
+            }
+
+            .results-section {
+                padding: 30px 20px;
+            }
+
+            .logo-top img {
+                height: 60px;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="calculatorContainer">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-top">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAqCAYAAAAyJNsRAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGnUlEQVRYhe2ZW2xUVRSGv7XPmcuZznQKbUsLpVIuBQottxYQEBBQQEQSH3zwAR98MPHBB1+M8cEYE43xQYwPvhhj1BgTE6MxGhONMRoTjTHRGKOJMZoYo4kxmhhjjDHG+M+eaafTmTnnzJkzp5QW+5LJzN5r7f9ba+991z6HGv9TUf8vAJXKlGUZhBBorRFCYFkWlmVhWRaWZWFZFkIIhBBYloVlWQiCv5VSaK2RUqK1RkqJ1hqtNVJKpJRorZFSorVGa40xBmMM+v9CUkqJ1hqtNVJKpJRorZFSorVGSonWGq01Qgi01mitefrppznppJNwXRfXdbEsiyVLltDb28uxY8d46KGH+Oijj9i+fTtSSrTWGGNQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSim01iilUEqhlEIphdYarTVaayoqSlJKjDEopVBKoZRCKYVSCqUUSim01iilUEqhtUYphVIKrTVaaxzHYc2aNXz++efU19ezZs0aPvjgA2pqali9ejWvvvoqmzdvpqmpiS+++IInn3yS999/n9bWVr744guklAghkFKilEIphVIKpRRKKYwxKKVQSqGUQimFUgqlFEoplFJIKVFKIaVEKYVSCqUUSim01iilUEqhtUZrjVIKpRRKKZRSaK3RWqO1RmuN1hqtNVprtNZorTHGoLVGa43WGq01Wmu01mit0VqjtcZ1XZqamti1axcXXXQRK1as4NNPP8VxHM4991x+//13PvzwQ84//3wOHTrEli1b2LJlC4cPH+aRRx6ho6ODnp4eXn75ZW688UY+/vhjtm/fTnd3N1dccQVnnnkm27Zto7+/n7179/Lggw+ydetWtmzZwlVXXcWFF17I9u3b6evrY8+ePdx///08++yztLS08OGHH3LNNdfQ3NzMrl272LdvH3v37uXuu+9m48aNLFu2jA8++ICrr76a+vp6du3axb59+9i7dy933nknjz76KKeccgrvvfceV155Jccffzw7duxg//797N27lzvuuIP169dz8sknEw6HUUohhEBKidYaKSVSSrTWaK3RWqO1RmuN1hqtNUIIlFIYYzDGYIzBGIMxBqUUxhiMMRhjkFJijEFrjVIKYwzGGIwxKKUwxmCMwRiD1hpjDMYYtNYopTDGYIzBGIPWGmMMWmuMMSilMMZgjEFrjTEGYwzGGLTWGGMwxmCMwRiDMQatNcYYlFIYY1BKobVGa43WGq01Wmu01mit0VqjtUZrjVIKrTVSSpRSSClRSqGUQkqJUgqlFEIIhBBIKRFCIIRACIEQAq01QgiEEAghEEKgtUYIQWVVViVCCLTWCCEQQqC1RgiBEAIhBFprhBAIIRBCoLVGCIEQAiEEQgiEEAghEEIghEBrjRACIQRCCIQQCCEQQiCEQAiBEAIhBFprhBAIIRBCIIRACIEQAiEEQgiEEAghaG1tpbu7m927d9PV1UVXVxddXV10dXXR2dnJwYMH6ejo4MCBA7S3t9PR0UFbWxttbW20t7fT1tZGa2srbW1ttLa20traSmtrK62trRw4cIDW1lYOHDhAR0cHBw4coKOjg/b2dtrb2+no6KC9vZ329nY6Ojpoa2ujvb2dtrY2Dh48SFtbG+3t7XR0dNDZ2UlHRwednZ10dnbS2dlJZ2cnXV1ddHZ20tXVRVdXF11dXXR3d9PZ2UlXVxddXV10d3fT3d1NV1cX3d3d9PT00N3dTU9PDz09PfT09NDT00NPTw89PT309PTQ09NDT08PfX199PX10dfXR19fH319ffT29tLX10dvby+9vb309vbS29tLf38/vb299Pf309/fT39/P/39/fT399Pf309/fz8DAwMMDAzQ39/PwMDA/9Pf38/AwAADAwMMDAwwMDDA4OAgAwMDDA4OMjAwwMDAAIODgwwODjI4OMjAwACDg4MMDg4yODjI4OAgQ0NDDA4OMjQ0xODgIENDQwwNDTE0NMTQ0BBDQ0MMDQ0xNDTE0NAQg4ODDA0NMTQ0xPDwMENDQwwPDzM8PMzw8DDDw8MMDw8zPDzM8PAww8PDDA8PMzw8zPDwMCMjIwwPDzMyMsLIyAgjIyOMjIwwMjLCyMgII" alt="Jacob Roig - Master Mindset & Business Coach">
+            </div>
+            <h1 class="main-title">The Pricing for Profit Calculator</h1>
+            <p class="subtitle">Calculate exactly what you need to charge per sale</p>
+        </div>
+
+        <!-- Calculator Card -->
+        <div class="calculator-card">
+            <!-- Input Fields -->
+            <div class="input-group">
+                <label class="input-label">Total Monthly Expenses (Fixed + Variable)</label>
+                <div class="input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="expenses" placeholder="0.00" step="0.01" min="0">
+                </div>
+                <p class="input-hint">Include rent, software, salaries, marketing, etc.</p>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Desired Monthly Income (Your Take-Home)</label>
+                <div class="input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="desiredIncome" placeholder="0.00" step="0.01" min="0">
+                </div>
+                <p class="input-hint">Your personal income goal for the month</p>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Number of Clients/Sales Per Month</label>
+                <input type="number" id="numberOfSales" placeholder="Estimate if unknown" step="1" min="1">
+                <p class="input-hint">Your projected or target number of monthly sales</p>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <div class="results-header">
+                    <div class="results-label">You Need to Charge</div>
+                    <div class="price-display" id="priceDisplay">$0.00</div>
+                    <p class="price-subtitle">per sale to hit your goals</p>
+                </div>
+
+                <div class="breakdown" id="breakdown" style="display: none;">
+                    <h3 class="breakdown-title">Breakdown:</h3>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Total Monthly Expenses:</span>
+                        <span class="breakdown-value" id="expensesBreakdown">$0.00</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Desired Income:</span>
+                        <span class="breakdown-value" id="incomeBreakdown">$0.00</span>
+                    </div>
+                    <div class="breakdown-row breakdown-total">
+                        <span class="breakdown-label">Total Revenue Needed:</span>
+                        <span class="breakdown-value" id="totalBreakdown">$0.00</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="breakdown-label">Number of Sales:</span>
+                        <span class="breakdown-value" id="salesBreakdown">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote Box -->
+            <div class="quote-box">
+                <p class="quote-text">"Where's your growth in that number?"</p>
+                <p class="quote-author">— Jacob Roig, Road Tested Coach</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAqCAYAAAAyJNsRAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGnUlEQVRYhe2ZW2xUVRSGv7XPmcuZznQKbUsLpVIuBQottxYQEBBQQEQSH3zwAR98MPHBB1+M8cEYE43xQYwPvhhj1BgTE6MxGhONMRoTjTHRGKOJMZoYo4kxmhhjjDHG+M+eaafTmTnnzJkzp5QW+5LJzN5r7f9ba+991z6HGv9TUf8vAJXKlGUZhBBorRFCYFkWlmVhWRaWZWFZFkIIhBBYloVlWQiCv5VSaK2RUqK1RkqJ1hqtNVJKpJRorZFSorVGa40xBmMM+v9CUkqJ1hqtNVJKpJRorZFSorVGSonWGq01Qgi01mitefrppznppJNwXRfXdbEsiyVLltDb28uxY8d46KGH+Oijj9i+fTtSSrTWGGNQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSim01iilUEqhlEIphdYarTVaayoqSlJKjDEopVBKoZRCKYVSCqUUSim01iilUEqhtUYphVIKrTVaaxzHYc2aNXz++efU19ezZs0aPvjgA2pqali9ejWvvvoqmzdvpqmpiS+++IInn3yS999/n9bWVr744guklAghkFKilEIphVIKpRRKKYwxKKVQSqGUQimFUgqlFEoplFJIKVFKIaVEKYVSCqUUSim01iilUEqhtUZrjVIKpRRKKZRSaK3RWqO1RmuN1hqtNVprtNZorTHGoLVGa43WGq01Wmu01mit0VqjtcZ1XZqamti1axcXXXQRK1as4NNPP8VxHM4991x+//13PvzwQ84//3wOHTrEli1b2LJlC4cPH+aRRx6ho6ODnp4eXn75ZW688UY+/vhjtm/fTnd3N1dccQVnnnkm27Zto7+/n7179/Lggw+ydetWtmzZwlVXXcWFF17I9u3b6evrY8+ePdx///08++yztLS08OGHH3LNNdfQ3NzMrl272LdvH3v37uXuu+9m48aNLFu2jA8++ICrr76a+vp6du3axb59+9i7dy933nknjz76KKeccgrvvfceV155Jccffzw7duxg//797N27lzvuuIP169dz8sknEw6HUUohhEBKidYaKSVSSrTWaK3RWqO1RmuN1hqtNUIIlFIYYzDGYIzBGIMxBqUUxhiMMRhjkFJijEFrjVIKYwzGGIwxKKUwxmCMwRiD1hpjDMYYtNYopTDGYIzBGIPWGmMMWmuMMSilMMZgjEFrjTEGYwzGGLTWGGMwxmCMwRiDMQatNcYYlFIYY1BKobVGa43WGq01Wmu01mit0VqjtUZrjVIKrTVSSpRSSClRSqGUQkqJUgqlFEIIhBBIKRFCIIRACIEQAq01QgiEEAghEEKgtUYIQWVVViVCCLTWCCEQQqC1RgiBEAIhBFprhBAIIRBCoLVGCIEQAiEEQgiEEAghEEIghEBrjRACIQRCCIQQCCEQQiCEQAiBEAIhBFprhBAIIRBCIIRACIEQAiEEQgiEEAghaG1tpbu7m927d9PV1UVXVxddXV10dXXR2dnJwYMH6ejo4MCBA7S3t9PR0UFbWxttbW20t7fT1tZGa2srbW1ttLa20traSmtrK62trRw4cIDW1lYOHDhAR0cHBw4coKOjg/b2dtrb2+no6KC9vZ329nY6Ojpoa2ujvb2dtrY2Dh48SFtbG+3t7XR0dNDZ2UlHRwednZ10dnbS2dlJZ2cnXV1ddHZ20tXVRVdXF11dXXR3d9PZ2UlXVxddXV10d3fT3d1NV1cX3d3d9PT00N3dTU9PDz09PfT09NDT00NPTw89PT309PTQ09NDT08PfX199PX10dfXR19fH319ffT29tLX10dvby+9vb309vbS29tLf38/vb299Pf309/fT39/P/39/fT399Pf309/fz8DAwMMDAzQ39/PwMDA/9Pf38/AwAADAwMMDAwwMDDA4OAgAwMDDA4OMjAwwMDAAIODgwwODjI4OMjAwACDg4MMDg4yODjI4OAgQ0NDDA4OMjQ0xODgIENDQwwNDTE0NMTQ0BBDQ0MMDQ0xNDTE0NAQg4ODDA0NMTQ0xPDwMENDQwwPDzM8PMzw8DDDw8MMDw8zPDzM8PAww8PDDA8PMzw8zPDwMCMjIwwPDzMyMsLIyAgjIyOMjIwwMjLCyMgII" alt="Jacob Roig Logo">
+            </div>
+            <p class="footer-tagline">Where pricing and business success equals sustained growth!</p>
+            <p class="footer-note">This calculator helps you price strategically to cover expenses and reach your income goals.</p>
+        </div>
+    </div>
+
+    <script>
+        // CALCULATOR FUNCTIONALITY
+        const expensesInput = document.getElementById('expenses');
+        const desiredIncomeInput = document.getElementById('desiredIncome');
+        const numberOfSalesInput = document.getElementById('numberOfSales');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const breakdown = document.getElementById('breakdown');
+        const expensesBreakdown = document.getElementById('expensesBreakdown');
+        const incomeBreakdown = document.getElementById('incomeBreakdown');
+        const totalBreakdown = document.getElementById('totalBreakdown');
+        const salesBreakdown = document.getElementById('salesBreakdown');
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+
+        function calculatePrice() {
+            const expenses = parseFloat(expensesInput.value) || 0;
+            const income = parseFloat(desiredIncomeInput.value) || 0;
+            const sales = parseFloat(numberOfSalesInput.value) || 0;
+
+            if (sales > 0) {
+                const price = (expenses + income) / sales;
+                priceDisplay.textContent = formatCurrency(price);
+            } else {
+                priceDisplay.textContent = '$0.00';
+            }
+
+            // Show breakdown if any value is entered
+            if (expenses > 0 || income > 0 || sales > 0) {
+                breakdown.style.display = 'block';
+                expensesBreakdown.textContent = formatCurrency(expenses);
+                incomeBreakdown.textContent = formatCurrency(income);
+                totalBreakdown.textContent = formatCurrency(expenses + income);
+                salesBreakdown.textContent = sales || 0;
+            } else {
+                breakdown.style.display = 'none';
+            }
+        }
+
+        // Add event listeners
+        expensesInput.addEventListener('input', calculatePrice);
+        desiredIncomeInput.addEventListener('input', calculatePrice);
+        numberOfSalesInput.addEventListener('input', calculatePrice);
+
+        // Initial calculation
+        calculatePrice();
+    </script>
+</body>
+</html>
