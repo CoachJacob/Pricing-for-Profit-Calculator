@@ -26,6 +26,9 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
+            background: #000000;
+            padding: 30px;
+            border-radius: 15px;
         }
 
         .logo-top {
@@ -46,7 +49,7 @@
         }
 
         .subtitle {
-            color: #64748b;
+            color: #ffffff;
             font-size: 16px;
         }
 
@@ -189,6 +192,16 @@
             background: #f0fdf4;
             border-left: 4px solid #B4E800;
             border-radius: 0 10px 10px 0;
+            text-align: center;
+        }
+
+        .quote-logo {
+            margin-bottom: 15px;
+        }
+
+        .quote-logo img {
+            height: 50px;
+            width: auto;
         }
 
         .quote-text {
@@ -196,6 +209,7 @@
             color: #334155;
             margin-bottom: 8px;
             font-size: 15px;
+            font-weight: 600;
         }
 
         .quote-author {
@@ -206,9 +220,7 @@
         .footer {
             text-align: center;
             margin-top: 40px;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            border-top: 2px solid #e2e8f0;
+            padding: 30px;
             background: #000000;
             border-radius: 15px;
         }
@@ -266,7 +278,7 @@
         <!-- Header -->
         <div class="header">
             <div class="logo-top">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAqCAYAAAAyJNsRAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGnUlEQVRYhe2ZW2xUVRSGv7XPmcuZznQKbUsLpVIuBQottxYQEBBQQEQSH3zwAR98MPHBB1+M8cEYE43xQYwPvhhj1BgTE6MxGhONMRoTjTHRGKOJMZoYo4kxmhhjjDHG+M+eaafTmTnnzJkzp5QW+5LJzN5r7f9ba+991z6HGv9TUf8vAJXKlGUZhBBorRFCYFkWlmVhWRaWZWFZFkIIhBBYloVlWQiCv5VSaK2RUqK1RkqJ1hqtNVJKpJRorZFSorVGa40xBmMM+v9CUkqJ1hqtNVJKpJRorZFSorVGSonWGq01Qgi01mitefrppznppJNwXRfXdbEsiyVLltDb28uxY8d46KGH+Oijj9i+fTtSSrTWGGNQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSim01iilUEqhlEIphdYarTVaayoqSlJKjDEopVBKoZRCKYVSCqUUSim01iilUEqhtUYphVIKrTVaaxzHYc2aNXz++efU19ezZs0aPvjgA2pqali9ejWvvvoqmzdvpqmpiS+++IInn3yS999/n9bWVr744guklAghkFKilEIphVIKpRRKKYwxKKVQSqGUQimFUgqlFEoplFJIKVFKIaVEKYVSCqUUSim01iilUEqhtUZrjVIKpRRKKZRSaK3RWqO1RmuN1hqtNVprtNZorTHGoLVGa43WGq01Wmu01mit0VqjtcZ1XZqamti1axcXXXQRK1as4NNPP8VxHM4551x+//13PvzwQ84//3wOHTrEli1b2LJlC4cPH+aRRx6ho6ODnp4eXn75ZW688UY+/vhjtm/fTnd3N1dccQVnnnkm27Zto7+/n7179/Lggw+ydetWtmzZwlVXXcWFF17I9u3b6evrY8+ePdx///08++yztLS08OGHH3LNNdfQ3NzMrl272LdvH3v37uXuu+9m48aNLFu2jA8++ICrr76a+vp6du3axb59+9i7dy933nknjz76KKeccgrvvfceV155Jccffzw7duxg//797N27lzvuuIP169dz8sknEw6HUUohhEBKidYaKSVSSrTWaK3RWqO1RmuN1hqtNUIIlFIYYzDGYIzBGIMxBqUUxhiMMRhjkFJijEFrjVIKYwzGGIwxKKUwxmCMwRiD1hpjDMYYtNYopTDGYIzBGIPWGmMMWmuMMSilMMZgjEFrjTEGYwzGGLTWGGMwxmCMwRiDMQatNcYYlFIYY1BKobVGa43WGq01Wmu01mit0VqjtUZrjVIKrTVSSpRSSClRSqGUQkqJUgqlFEIIhBBIKRFCIIRACIEQAq01QgiEEAghEEKgtUYIQWVVViVCCLTWCCEQQqC1RgiBEAIhBFprhBAIIRBCoLVGCIEQAiEEQgiEEAghEEIghEBrjRACIQRCCIQQCCEQQiCEQAiBEAIhBFprhBAIIRBCIIRACIEQAiEEQgiEEAghaG1tpbu7m927d9PV1UVXVxddXV10dXXR2dnJwYMH6ejo4MCBA7S3t9PR0UFbWxttbW20t7fT1tZGa2srbW1ttLa20traSmtrK62trRw4cIDW1lYOHDhAR0cHBw4coKOjg/b2dtrb2+no6KC9vZ329nY6Ojpoa2ujvb2dtrY2Dh48SFtbG+3t7XR0dNDZ2UlHRwednZ10dnbS2dlJZ2cnXV1ddHZ20tXVRVdXF11dXXR3d9PZ2UlXVxddXV10d3fT3d1NV1cX3d3d9PT00N3dTU9PDz09PfT09NDT00NPTw89PT309PTQ09NDT08PfX199PX10dfXR19fH319ffT29tLX10dvby+9vb309vbS29tLf38/vb399Pf309/fT39/P/39/fT399Pf309/fz8DAwMMDAzQ39/PwMDA/9Pf38/AwAADAwMMDAwwMDDA4OAgAwMDDA4OMjAwwMDAAIODgwwODjI4OMjAwACDg4MMDg4yODjI4OAgQ0NDDA4OMjQ0xODgIENDQwwNDTE0NMTQ0BBDQ0MMDQ0xNDTE0NAQg4ODDA0NMTQ0xPDwMENDQwwPDzM8PMzw8DDDw8MMDw8zPDzM8PAww8PDDA8PMzw8zPDwMCMjIwwPDzMyMsLIyAgjIyOMjIwwMjLCyMgII" alt="Jacob Roig - Master Mindset & Business Coach">
+                <p style="font-size: 24px; font-weight: 700; color: #ffffff; margin: 0;">Jacob Roig - Master Coach</p>
             </div>
             <h1 class="main-title">The Pricing for Profit Calculator</h1>
             <p class="subtitle">Calculate exactly what you need to charge per sale</p>
@@ -330,8 +342,8 @@
 
             <!-- Quote Box -->
             <div class="quote-box">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAqCAYAAAAyJNsRAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGnUlEQVRYhe2ZW2xUVRSGv7XPmcuZznQKbUsLpVIuBQottxYQEBBQQEQSH3zwAR98MPHBB1+M8cEYE43xQYwPvhhj1BgTE6MxGhONMZoTjTHRGKOJMZoYo4kxmhhjjDHG+M+eaafTmTnnzJkzp5QW+5LJzN5r7f9ba+991z6HGv9TUf8vAJXKlGUZhBBorRFCYFkWlmVhWRaWZWFZFkIIhBBYloVlWQiCv5VSaK2RUqK1RkqJ1hqtNVJKpJRorZFSorVGa40xBmMM+v9CUkqJ1hqtNVJKpJRorZFSorVGSonWGq01Qgi01mitefrppznppJNwXRfXdbEsiyVLltDb28uxY8d46KGH+Oijj9i+fTtSSrTWGGNQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSim01iilUEqhlEIphdYarTVaayoqSlJKjDEopVBKoZRCKYVSCqUUSim01iilUEqhtUYphVIKrTVaaxzHYc2aNXz++efU19ezZs0aPvjgA2pqali9ejWvvvoqmzdvpqmpiS+++IInn3yS999/n9bWVr744guklAghkFKilEIphVIKpRRKKYwxKKVQSqGUQimFUgqlFEoplFJIKVFKIaVEKYVSCqUUSim01iilUEqhtUZrjVIKpRRKKZRSaK3RWqO1RmuN1hqtNVprtNZorTHGoLVGa43WGq01Wmu01mit0VqjtcZ1XZqamti1axcXXXQRK1as4NNPP8VxHM4551x+//13PvzwQ84//3wOHTrEli1b2LJlC4cPH+aRRx6ho6ODnp4eXn75ZW688UY+/vhjtm/fTnd3N1dccQVnnnkm27Zto7+/n7179/Lggw+ydetWtmzZwlVXXcWFF17I9u3b6evrY8+ePdx///08++yztLS08OGHH3LNNdfQ3NzMrl272LdvH3v37uXuu+9m48aNLFu2jA8++ICrr76a+vp6du3axb59+9i7dy933nknjz76KKeccgrvvfceV155Jccffzw7duxg//797N27lzvuuIP169dz8sknEw6HUUohhEBKidYaKSVSSrTWaK3RWqO1RmuN1hqtNUIIlFIYYzDGYIzBGIMxBqUUxhiMMRhjkFJijEFrjVIKYwzGGIwxKKUwxmCMwRiD1hpjDMYYtNYopTDGYIzBGIPWGmMMWmuMMSilMMZgjEFrjTEGYwzGGLTWGGMwxmCMwRiDMQatNcYYlFIYY1BKobVGa43WGq01Wmu01mit0VqjtUZrjVIKrTVSSpRSSClRSqGUQkqJUgqlFEIIhBBIKRFCIIRACIEQAq01QgiEEAghEEKgtUYIQWVVViVCCLTWCCEQQqC1RgiBEAIhBFprhBAIIRBCoLVGCIEQAiEEQgiEEAghEEIghEBrjRACIQRCCIQQCCEQQiCEQAiBEAIhBFprhBAIIRBCIIRACIEQAiEEQgiEEAghaG1tpbu7m927d9PV1UVXVxddXV10dXXR2dnJwYMH6ejo4MCBA7S3t9PR0UFbWxttbW20t7fT1tZGa2srbW1ttLa20traSmtrK62trRw4cIDW1lYOHDhAR0cHBw4coKOjg/b2dtrb2+no6KC9vZ329nY6Ojpoa2ujvb2dtrY2Dh48SFtbG+3t7XR0dNDZ2UlHRwednZ10dnbS2dlJZ2cnXV1ddHZ20tXVRVdXF11dXXR3d9PZ2UlXVxddXV10d3fT3d1NV1cX3d3d9PT00N3dTU9PDz09PfT09NDT00NPTw89PT309PTQ09NDT08PfX199PX10dfXR19fH319ffT29tLX10dvby+9vb309vbS29tLf38/vb399Pf309/fT39/P/39/fT399Pf309/fz8DAwMMDAzQ39/PwMDA/9Pf38/AwAADAwMMDAwwMDDA4OAgAwMDDA4OMjAwwMDAAIODgwwODjI4OMjAwACDg4MMDg4yODjI4OAgQ0NDDA4OMjQ0xODgIENDQwwNDTE0NMTQ0BBDQ0MMDQ0xNDTE0NAQg4ODDA0NMTQ0xPDwMENDQwwPDzM8PMzw8DDDw8MMDw8zPDzM8PAww8PDDA8PMzw8zPDwMCMjIwwPDzMyMsLIyAgjIyOMjIwwMjLCyMgII" alt="Jacob Roig Logo" style="height: 40px; width: auto;">
+                <div class="quote-logo">
+                    <p style="font-size: 18px; font-weight: 700; color: #2d3e50; margin: 0;">Jacob Roig</p>
                 </div>
                 <p class="quote-text">"What's Your Growth Pricing Number?"</p>
                 <p class="quote-author">— Jacob Roig, Road Tested Coach</p>
@@ -341,7 +353,7 @@
         <!-- Footer -->
         <div class="footer">
             <div class="footer-logo">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAqCAYAAAAyJNsRAAAACXBIWXMAAC4jAAAuIwF4pT92AAAGnUlEQVRYhe2ZW2xUVRSGv7XPmcuZznQKbUsLpVIuBQottxYQEBBQQEQSH3zwAR98MPHBB1+M8cEYE43xQYwPvhhj1BgTE6MxGhONMZoTjTHRGKOJMZoYo4kxmhhjjDHG+M+eaafTmTnnzJkzp5QW+5LJzN5r7f9ba+991z6HGv9TUf8vAJXKlGUZhBBorRFCYFkWlmVhWRaWZWFZFkIIhBBYloVlWQiCv5VSaK2RUqK1RkqJ1hqtNVJKpJRorZFSorVGa40xBmMM+v9CUkqJ1hqtNVJKpJRorZFSorVGSonWGq01Qgi01mitefrppznppJNwXRfXdbEsiyVLltDb28uxY8d46KGH+Oijj9i+fTtSSrTWGGNQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSim01iilUEqhlEIphdYarTVaayoqSlJKjDEopVBKoZRCKYVSCqUUSim01iilUEqhtUYphVIKrTVaaxzHYc2aNXz++efU19ezZs0aPvjgA2pqali9ejWvvvoqmzdvpqmpiS+++IInn3yS999/n9bWVr744guklAghkFKilEIphVIKpRRKKYwxKKVQSqGUQimFUgqlFEoplFJIKVFKIaVEKYVSCqUUSim01iilUEqhtUZrjVIKpRRKKZRSaK3RWqO1RmuN1hqtNVprtNZorTHGoLVGa43WGq01Wmu01mit0VqjtcZ1XZqamti1axcXXXQRK1as4NNPP8VxHM4991x+//13PvzwQ84//3wOHTrEli1b2LJlC4cPH+aRRx6ho6ODnp4eXn75ZW688UY+/vhjtm/fTnd3N1dccQVnnnkm27Zto7+/n7179/Lggw+ydetWtmzZwlVXXcWFF17I9u3b6evrY8+ePdx///08++yztLS08OGHH3LNNdfQ3NzMrl272LdvH3v37uXuu+9m48aNLFu2jA8++ICrr76a+vp6du3axb59+9i7dy933nknjz76KKeccgrvvfceV155Jccffzw7duxg//797N27lzvuuIP169dz8sknEw6HUUohhEBKidYaKSVSSrTWaK3RWqO1RmuN1hqtNUIIlFIYYzDGYIzBGIMxBqUUxhiMMRhjkFJijEFrjVIKYwzGGIwxKKUwxmCMwRiD1hpjDMYYtNYopTDGYIzBGIPWGmMMWmuMMSilMMZgjEFrjTEGYwzGGLTWGGMwxmCMwRiDMQatNcYYlFIYY1BKobVGa43WGq01Wmu01mit0VqjtUZrjVIKrTVSSpRSSClRSqGUQkqJUgqlFEIIhBBIKRFCIIRACIEQAq01QgiEEAghEEKgtUYIQWVVViVCCLTWCCEQQqC1RgiBEAIhBFprhBAIIRBCoLVGCIEQAiEEQgiEEAghEEIghEBrjRACIQRCCIQQCCEQQiCEQAiBEAIhBFprhBAIIRBCIIRACIEQAiEEQgiEEAghaG1tpbu7m927d9PV1UVXVxddXV10dXXR2dnJwYMH6ejo4MCBA7S3t9PR0UFbWxttbW20t7fT1tZGa2srbW1ttLa20traSmtrK62trRw4cIDW1lYOHDhAR0cHBw4coKOjg/b2dtrb2+jo6KC9vZ729nY6Ojpoa2ujvb2dtrY2Dh48SFtbG+3t7XR0dNDZ2UlHRwednZ10dnbS2dlJZ2cnXV1ddHZ20tXVRVdXF11dXXR3d9PZ2UlXVxddXV10d3fT3d1NV1cX3d3d9PT00N3dTU9PDz09PfT09NDT00NPTw89PT309PTQ09NDT08PfX199PX10dfXR19fH319ffT29tLX10dvby+9vb309vbS29tLf38/vb399Pf309/fT39/P/39/fT399Pf309/fz8DAwMMDAzQ39/PwMDA/9Pf38/AwAADAwMMDAwwMDDA4OAgAwMDDA4OMjAwwMDAAIODgwwODjI4OMjAwACDg4MMDg4yODjI4OAgQ0NDDA4OMjQ0xODgIENDQwwNDTE0NMTQ0BBDQ0MMDQ0xNDTE0NAQg4ODDA0NMTQ0xPDwMENDQwwPDzM8PMzw8DDDw8MMDw8zPDzM8PAww8PDDA8PMzw8zPDwMCMjIwwPDzMyMsLIyAgjIyOMjIwwMjLCyMgII" alt="Jacob Roig Logo">
+                <p style="font-size: 18px; font-weight: 700; color: #B4E800; margin: 0;">Jacob Roig - Master Coach</p>
             </div>
             <p class="footer-tagline">Where pricing and business success equals sustained growth!</p>
             <p class="footer-note">This calculator helps you price strategically to cover expenses and reach your income goals.</p>
